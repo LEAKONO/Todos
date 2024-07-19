@@ -17,7 +17,9 @@ db.init_app(app)
 migrate = Migrate(app, db)
 CORS(app)
 api = Api(app)
-
+@app.route('/',methods=['GET'])
+def home():
+    return "<h1>Welcome to the Todos app</h1>"
 @app.route('/todos', methods=['GET'])
 def get_todos():
     todos = TodoItem.query.all()
